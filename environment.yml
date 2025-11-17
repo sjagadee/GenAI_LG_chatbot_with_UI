@@ -1,0 +1,76 @@
+name: for_genai
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.12
+  - pip
+  - streamlit
+  - pydantic
+  - email-validator
+  - jupyter
+  - ipykernel
+  - pypdf
+  - docx2txt
+  - chromadb
+  - tiktoken
+  - wikipedia
+  - faiss-cpu
+  - youtube-transcript-api
+  - requests
+  - psycopg2
+  - unstructured
+
+# Generative AI Frameworks
+
+# LangChain
+  - langchain
+  - langchain-core
+  - langchain-community
+  - langchain-experimental
+  - langchain-chroma
+
+# LangGraph
+  - langgraph
+
+# Tracing tool
+  - langsmith
+
+# OpenAI Integration
+  - langchain-openai
+  - openai
+
+# Anthropic Integration
+  - langchain-anthropic
+
+# Google Generative AI Integration
+  - langchain-google-genai
+  - google-generativeai
+
+# Hugging Face Integration
+  - langchain-huggingface
+  - transformers
+
+# Environment Variable Management
+  - python-dotenv
+
+# Machine Learning Utilities
+  - numpy
+  - scikit-learn
+
+# Other Dependencies from PyPI
+  - pip:
+    - huggingface-hub
+    - duckduckgo-search
+    - ddgs
+
+# to set up the environment
+# conda env create -f environment.yml
+# conda env update -f environment.yml
+# conda env remove --name <environment_name>
+
+# to activate the environment
+# conda activate for_genai
+
+# to deactivate the environment
+# conda deactivate
