@@ -1,10 +1,11 @@
 from langgraph.graph import StateGraph, START, END
-from langchain_core.messages import BaseMessage
+from langchain_core.messages import BaseMessage, HumanMessage
 from langchain_openai import ChatOpenAI
 from langgraph.graph.message import add_messages
-from langgraph.checkpoint.memory import InMemorySaver
+from langgraph.checkpoint.sqlite import SqliteSaver
 from typing import TypedDict, Annotated
 from dotenv import load_dotenv
+import sqlite3
 
 load_dotenv()
 llm = ChatOpenAI(model="gpt-4.1-nano")
@@ -27,8 +28,11 @@ def chat_node(state: ChatState):
     # add response to state
     return {'messages': [response]}
 
+# connect to sqlite database
+conn = sqlite3.connect('langgraph.db', check_same_thread=False)
+
 # define checkpointer for memory
-checkpointer = InMemorySaver()
+checkpointer = SqliteSaver(conn=conn)
 
 # define state graph
 graph = StateGraph(ChatState)
@@ -42,3 +46,12 @@ graph.add_edge('chat_node', END)
 
 # compile the graph
 chatbot = graph.compile(checkpointer=checkpointer)
+
+# checkpointer list - to get all threads uniquely
+def get_threads():
+    global checkpointer
+    unique_thread_ids = set()
+    for check in checkpointer.list(None):
+        unique_thread_ids.add(check.config['configurable']['thread_id'])
+
+    return list(unique_thread_ids)

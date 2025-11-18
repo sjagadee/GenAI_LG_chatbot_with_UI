@@ -32,7 +32,7 @@ dependencies:
 
 # LangGraph
   - langgraph
-
+  
 # Tracing tool
   - langsmith
 
@@ -63,6 +63,7 @@ dependencies:
     - huggingface-hub
     - duckduckgo-search
     - ddgs
+    - langgraph-checkpoint-sqlite
 
 # to set up the environment
 # conda env create -f environment.yml
