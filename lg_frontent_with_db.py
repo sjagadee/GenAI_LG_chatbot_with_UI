@@ -7,8 +7,6 @@ from uuid import uuid4
 # 1. Chat input
 # 2. Chat messages - a list of messages
 
-CONFIG = {'configurable': {'thread_id': 'thread-1'}}
-
 # *************** Utility functions ***************
 
 def generate_thread_id():

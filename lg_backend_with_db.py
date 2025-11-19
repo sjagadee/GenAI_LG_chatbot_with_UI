@@ -3,6 +3,8 @@ from langchain_core.messages import BaseMessage, HumanMessage
 from langchain_openai import ChatOpenAI
 from langgraph.graph.message import add_messages
 from langgraph.checkpoint.sqlite import SqliteSaver
+from langsmith import traceable
+
 from typing import TypedDict, Annotated
 from dotenv import load_dotenv
 import sqlite3
